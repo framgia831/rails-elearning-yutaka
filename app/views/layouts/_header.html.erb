@@ -1,23 +1,25 @@
 <header>
-	<nav class="navbar navbar-default navbar-fixed-top">
- 		 <div class="container">
-	 		
-	 		<div class="navbar-header">
-				<%= link_to "E-learing", root_path, id:"logo" %>
-			</div>
+    <nav class="navbar navbar-default navbar-fixed-top">
+         <div class="container">
+                
+            <div class="navbar-header">
+                    <%= link_to "E-larning", root_path, id:"logo" %>
+            </div>
 
-	 		<div id="navbar" class="collapse navbar-collapse navbar-right">
-				<ul class="nav navbar-nav">
+            <div id="navbar" class="collapse navbar-collapse navbar-right">
+                <ul class="nav navbar-nav">
 
-		  			<% if session[:user_id] %>
-		  				<li>現在ログインしているユーザーのid: <%= session[:user_id] %></li> 
-		  			<% end %>
-		  			
-		  			<li class="active"><%= link_to "SignUP", signup_path %></li>
-		  			<li class="active"><%= link_to "logIn", login_path %></li>
-		  			<li class="active"><%= link_to "logout", logout_path,method: :delete %></li>
-				</ul>
-	 		</div>
-  		</div>
-	</nav>
+                    <% if session[:user_id] %>
+                            <li>現在ログインしているユーザーのid: <%= session[:user_id] %></li> 
+                    <% end %>
+                    <% if logged_in? %>
+                    <li class="active"><%= link_to "logout", logout_path,method: :delete %></li>
+                    <% else %>                    
+                    <li class="active"><%= link_to "SignUP", signup_path %></li>
+                    <li class="active"><%= link_to "logIn", login_path %></li>
+                    <% end %>
+                </ul>
+            </div>
+    </div>
+    </nav>
 </header>
