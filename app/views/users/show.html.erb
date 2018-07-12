@@ -1,5 +1,13 @@
-<div>
-	<h1><%= @user.name %></h1>
-	<p><%= @user.email %></p>
-	<p><%= link_to "edit", edit_user_path %></p>
+<div class="row">
+	<div class="col-md-4">
+		<%= render 'shared/user_info' %>
+    	<%= render 'shared/stats' %>
+		<%= render 'shared/follow_form' %>
+    	<p><%= link_to "edit", edit_user_path %></p>
+	</div>
+	<div class="col-md-8">
+		<h1>Dashbord</h1>
+		
+	</div>
+
 </div>
