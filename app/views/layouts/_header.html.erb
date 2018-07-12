@@ -13,8 +13,10 @@
                             <li>現在ログインしているユーザーのid: <%= session[:user_id] %></li> 
                     <% end %>
                     <% if logged_in? %>
+                    <li class="active"><%= link_to "User list", users_path %></li>
+                    <li class="active"><%= link_to "Setting", edit_user_path(current_user) %></li>
                     <li class="active"><%= link_to "logout", logout_path,method: :delete %></li>
-                    <% else %>                    
+                    <% else %>
                     <li class="active"><%= link_to "SignUP", signup_path %></li>
                     <li class="active"><%= link_to "logIn", login_path %></li>
                     <% end %>
