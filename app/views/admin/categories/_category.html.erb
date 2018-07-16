@@ -1,0 +1,8 @@
+<li>
+	<h2><%= category.title %></h2>
+	<p><%= category.description %></p>
+	<%= link_to "Start","#" %>
+	<%= link_to "Add Word","#" %>
+	<%= link_to "edit", edit_admin_category_path(category) %>
+	<%= link_to "delete", admin_category_path(category),:method => :delete %>
+</li>
