@@ -5,7 +5,7 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def create
-     @category = Category.new(title_params)
+     @category = Category.new(category_params)
       if @category.save 
       flash[:success] = "Create Category"
       redirect_to admin_categories_path
@@ -21,6 +21,19 @@ class Admin::CategoriesController < ApplicationController
   def index
     @categories = Category.paginate(page: params[:page],per_page:15)
   end
+  def edit
+    @category = Category.find(params[:id])
+  end
+
+  def update
+    @category = Category.find_by(id: params[:id])
+      if @category.update_attributes(category_params);
+        flash[:success] = "Updated uccessfully"
+        redirect_to admin_categories_path
+    else
+        render 'edit'
+      end
+  end
 
   def destroy
     @category = Category.find(params[:id])
@@ -32,7 +45,7 @@ class Admin::CategoriesController < ApplicationController
     def admin_user
       redirect_to(root_url) unless current_user.admin?
     end
-    def title_params
+    def category_params
     params.require(:category).permit(:title,:description)
     end
 end
