@@ -1,8 +1,8 @@
 class Admin::CategoriesController < ApplicationController
-	before_action :admin_user
-	def new
-		@category = Category.new
-	end
+  before_action :admin_user
+  def new
+    @category = Category.new
+  end
 
   def create
      @category = Category.new(title_params)
