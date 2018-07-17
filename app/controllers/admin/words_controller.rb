@@ -15,7 +15,7 @@ class Admin::WordsController < ApplicationController
   end
 
   def edit
-    @category = Category.find(params[:category_id])
+    @category = Category.find_by(params[:category_id])
     @word = Word.find(params[:id])
   end
   def show
@@ -34,7 +34,7 @@ class Admin::WordsController < ApplicationController
 
   def index
     @words = Word.paginate(page: params[:page],per_page:15)
-    @category = Category.find(params[:category_id])
+    @category = Category.find_by(params[:category_id])
   end
 
   def destroy
