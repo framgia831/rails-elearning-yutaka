@@ -39,7 +39,7 @@ class Admin::WordsController < ApplicationController
 
   def index
     @words = Word.paginate(page: params[:page],per_page:15)
-    @word = @words.find
+    @word = @words.find_by(params[:id])
     @category = Category.find(params[:category_id])
   end
 
