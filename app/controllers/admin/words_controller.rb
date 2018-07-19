@@ -4,6 +4,11 @@ class Admin::WordsController < ApplicationController
     @word = Word.new
   end
 
+  def show
+    @words = Word.paginate(page: params[:page],per_page:15)
+    @category = Category.find_by(params[:category_id])
+  end
+
   def create
     @word = Word.new(word_params)
       if @word.save 
@@ -34,7 +39,8 @@ class Admin::WordsController < ApplicationController
 
   def index
     @words = Word.paginate(page: params[:page],per_page:15)
-    @category = Category.find_by(params[:category_id])
+    @word = @words.find
+    @category = Category.find(params[:category_id])
   end
 
   def destroy
