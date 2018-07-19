@@ -1,14 +1,12 @@
 <%= form_for @word, url:admin_category_word_word_answers_path(@category, @word), method: :post do |f|  %>
-	<%= f.fields_for :word_answers do |a| %>
-    <div class= "form-group">
-        <%#= f.label :content %>
+    <%= f.fields_for :word_answers do |a| %>
+        <div class= "form-group">
+            <%= a.label :content %>
+            <%= a.check_box :content, {} %>
+            <%= a.label :content %>
+            <%= a.text_field :content,  class: "form-control" %>
 
-        <%= a.label :content %>
-        <%= a.check_box :content, {} %>
-        <%= a.label :content %>
-        <%= a.text_field :content,  class: "form-control" %>
-
-    </div>
+        </div>
     <% end %>
 
         <%= f.submit "Create new answer", class: "btn btn-primary form-control" %>

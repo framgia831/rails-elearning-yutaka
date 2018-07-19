@@ -5,7 +5,8 @@ class Admin::WordsController < ApplicationController
   end
 
   def show
-    @words = Word.paginate(page: params[:page],per_page:15)
+    @word = Word.find_by(params[:id])
+    @word_answers = @word.word_answers.paginate(page: params[:page],per_page:15)
     @category = Category.find_by(params[:category_id])
   end
 
@@ -23,9 +24,7 @@ class Admin::WordsController < ApplicationController
     @category = Category.find_by(params[:category_id])
     @word = Word.find(params[:id])
   end
-  def show
-    
-  end
+
   def update
     @category = Category.find_by(params[:category_id])
     @word = Word.find_by(params[:id])
