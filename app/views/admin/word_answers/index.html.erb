@@ -1,13 +1,11 @@
 <%=  provide(:title,"answers") %>
 <div>
     <h1 class=""><%= yield(:title) %></h1>
-
-    <%= link_to "NEW ANSWER", new_admin_category_word_word_answer_path %>
 </div>
     <%= will_paginate %>
 
     <ul class="users">
-        <%= render @word_answers %>
+        <%= render @word_answer %>
     </ul>
 
     <%= will_paginate %>

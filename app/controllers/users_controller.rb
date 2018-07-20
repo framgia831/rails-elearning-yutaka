@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       if @user.update_attributes(user_params);
         flash[:success] = "Updated uccessfully"
         redirect_to @user
-    else
+      else
         render 'edit'
       end
   end

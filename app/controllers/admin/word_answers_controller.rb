@@ -1,18 +1,18 @@
 class Admin::WordAnswersController < ApplicationController
   before_action :admin_user
   def new
-    @category = Category.find_by(params[:category_id])
+    @category = Category.find(params[:category_id])
     @word = Word.find(params[:word_id])
     4.times {@word.word_answers.build}
   end
 
   def create
+    @category = Category.find(params[:category_id])
     @word = Word.find(params[:word_id])
-    @word.assign_attributes(word_params)
-    @category = Category.find_by(params[:category_id])
+    @word.assign_attributes(word_params) 
     if @word.save 
       flash[:success] = "Create "
-      redirect_to admin_category_words_path(@category,@word)
+      redirect_to admin_category_word_word_answers_path(@category,@word)
     else
       render "new"
     end
@@ -24,9 +24,18 @@ class Admin::WordAnswersController < ApplicationController
   end
 
   def index
-    @word_answers = WordAnswer.paginate(page: params[:page],per_page:15)
-    @words = Word.find_by(params[:word_id])
-    @category = Category.find_by(params[:category_id])
+    @category = Category.find(params[:category_id])
+    @words = @category.words.find(params[:word_id])
+    @word_answers = @words.word_answers.paginate(page: params[:page],per_page:15)
+    @word_answer = @word_answers.where(params[:id])
+
+    # @words = Word.find_by(params[:word_id])
+    # @word_answers = WordAnswer.paginate(page: params[:page],per_page:15)
+
+
+    #word
+    # @words = @category.words.paginate(page: params[:page],per_page:15)
+    # @word = @words.find_by(params[:id])
   end
 
 private

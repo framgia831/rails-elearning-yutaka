@@ -1,20 +1,23 @@
 class Admin::WordsController < ApplicationController
   before_action :admin_user
   def new
-    @word = Word.new
+    @category = Category.find(params[:category_id])
+    @word = @category.words.build
   end
 
-  def show
-    @word = Word.find_by(params[:id])
-    @word_answers = @word.word_answers.paginate(page: params[:page],per_page:15)
-    @category = Category.find_by(params[:category_id])
-  end
+  # def show
+  #   @word = Word.find_by(params[:id])
+  #   @word_answers = @word.word_answers.paginate(page: params[:page],per_page:15)
+  #   @category = Category.find(params[:category_id])
+  # end
 
   def create
-    @word = Word.new(word_params)
+    @category = Category.find(params[:category_id])
+    @word = @category.words.build(word_params)
+
       if @word.save 
         flash[:success] = "Create Word"
-        redirect_to admin_category_words_path
+        redirect_to admin_category_words_path(@category)
       else
         render "new"
     end
@@ -26,9 +29,9 @@ class Admin::WordsController < ApplicationController
   end
 
   def update
-    @category = Category.find_by(params[:category_id])
+    @category = Category.find(params[:category_id])
     @word = Word.find_by(params[:id])
-      if @word.update_attributes(word_params);
+      if @word.update_attributes(word_params)
         flash[:success] = "Updated uccessfully"
         redirect_to admin_category_words_path
     else
@@ -37,9 +40,9 @@ class Admin::WordsController < ApplicationController
   end
 
   def index
-    @words = Word.paginate(page: params[:page],per_page:15)
-    @word = @words.find_by(params[:id])
     @category = Category.find(params[:category_id])
+    @words = @category.words.paginate(page: params[:page],per_page:15)
+    @word = @words.find_by(params[:id])
   end
 
   def destroy
