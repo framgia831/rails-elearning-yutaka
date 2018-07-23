@@ -15,7 +15,8 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def show
-    @category = Category.find_by(params[:category_id])
+    @category = Category.find(params[:id])
+    # @category = Category.find_by(params[:category_id])
     @words = @category.words.where(params[:word_id])
     
 
