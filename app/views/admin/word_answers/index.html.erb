@@ -1,0 +1,11 @@
+<%=  provide(:title,"answers") %>
+<div>
+    <h1 class=""><%= yield(:title) %></h1>
+</div>
+    <%= will_paginate %>
+
+    <ul class="users">
+        <%= render @word_answer %>
+    </ul>
+
+    <%= will_paginate %>

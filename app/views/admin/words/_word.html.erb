@@ -1,7 +1,7 @@
 <li>
-    <h2><%= word.category_id %></h2>
     <p><%= word.content %></p>
-    <%= link_to "Add answer", "#" %>
+    <%= link_to "Show answer", admin_category_word_word_answers_path(@category,word) %>
+    <%= link_to "Add answer", new_admin_category_word_word_answer_path(@category,word) %>
     <%= link_to "edit", edit_admin_category_word_path(@category,word) %>
     <%= link_to "delete", admin_category_word_path(@category,word),:method => :delete %>
 </li>

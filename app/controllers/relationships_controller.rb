@@ -8,7 +8,6 @@ class RelationshipsController < ApplicationController
   def destroy
     user = Relationship.find(params[:id]).followed
     current_user.unfollow(user)
-    # relationship.destroy
     flash[:info] = "You unfollowed #{user.name}"
     redirect_to user
   end

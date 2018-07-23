@@ -1,0 +1,23 @@
+<%=  provide(:title,"Category content") %>
+<div>
+    <h1 class=""><%= yield(:title) %></h1>
+</div>
+    <ul class="users">
+        <li>
+            <div>
+                <h2>Category name</h2>
+                <p><%= @category.title %></p>
+            </div>
+        </li>
+            <div>
+            <% @words.each do |word| %>
+                <h5>Word: <%= word.content %></h5>
+                <li> 
+                <h6>Word answer</h6>
+                <% word.word_answers.each do |w| %>
+                    <p><%= w.content %>  :<%= w.correct  %></p>
+                <% end %>
+                </li>
+            <% end %>
+            </div>
+    </ul>

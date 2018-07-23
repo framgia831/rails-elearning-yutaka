@@ -7,6 +7,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'bootstrap-sass', '~> 3.3.7'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 gem 'bootstrap-will_paginate', '1.0.0'
+gem 'jquery-rails'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'
