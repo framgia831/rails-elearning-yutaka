@@ -18,24 +18,11 @@ class Admin::WordAnswersController < ApplicationController
     end
   end
 
-  def show
-    @word = Word.find_by(params[:word_id])
-    @word_answers = @word.word_answers.paginate(page: params[:page],per_page:15)
-  end
-
   def index
     @category = Category.find(params[:category_id])
     @words = @category.words.find(params[:word_id])
     @word_answers = @words.word_answers.paginate(page: params[:page],per_page:15)
     @word_answer = @word_answers.where(params[:id])
-
-    # @words = Word.find_by(params[:word_id])
-    # @word_answers = WordAnswer.paginate(page: params[:page],per_page:15)
-
-
-    #word
-    # @words = @category.words.paginate(page: params[:page],per_page:15)
-    # @word = @words.find_by(params[:id])
   end
 
 private

@@ -5,12 +5,6 @@ class Admin::WordsController < ApplicationController
     @word = @category.words.build
   end
 
-  # def show
-  #   @word = Word.find_by(params[:id])
-  #   @word_answers = @word.word_answers.paginate(page: params[:page],per_page:15)
-  #   @category = Category.find(params[:category_id])
-  # end
-
   def create
     @category = Category.find(params[:category_id])
     @word = @category.words.build(word_params)
