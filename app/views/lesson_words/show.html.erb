@@ -1,0 +1,5 @@
+Category Title:<%= @lesson.category.title %><br>
+Word content:<%= @lesson_word.word.content %><br>
+Word Answers <% @lesson_word.word.word_answers.each do |word| %>
+<%= button_to   word.content, lesson_lesson_word_path, :method => "put"%>
+<% end %>

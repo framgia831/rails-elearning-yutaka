@@ -16,6 +16,7 @@
                         <% if current_user.admin %>
                             <li class="active"><%= link_to "admin", admin_categories_path %></li>
                         <% end %>
+                    <li class="active"><%= link_to "Category", categories_path(current_user) %></li>
                     <li class="active"><%= link_to "User list", users_path %></li>
                     <li class="active"><%= link_to "Setting", edit_user_path(current_user) %></li>
                     <li class="active"><%= link_to "logout", logout_path,method: :delete %></li>

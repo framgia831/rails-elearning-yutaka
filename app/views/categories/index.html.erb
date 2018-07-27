@@ -1,0 +1,13 @@
+<%=  provide(:title,"categories") %>
+<div>
+    <h1 class=""><%= yield(:title) %></h1>
+
+    <%= link_to "NEW CATEGORIES", new_admin_category_path %>
+</div>
+    <%= will_paginate %>
+
+    <ul class="users">
+        <%= render @categories %>
+    </ul>
+
+    <%= will_paginate %>

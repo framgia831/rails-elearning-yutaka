@@ -100,3 +100,11 @@ header{
   margin:auto;
   float: none;
 }
+
+table {
+  border-collapse: collapse;
+}
+th,td {
+  border: solid 1px;
+  padding: 0.5em;
+}

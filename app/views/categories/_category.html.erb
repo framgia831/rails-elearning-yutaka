@@ -1,0 +1,5 @@
+<li>
+    <h2><%= link_to category.title, admin_category_path(category) %></h2>
+    <p><%= category.description %></p>
+    <%= button_to "Start", category.lessons.build(user: current_user), params: {category_id: category.id} %>
+</li>
