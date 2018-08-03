@@ -1,0 +1,11 @@
+<%=  provide(:title,"categories") %>
+<div>
+    <h1 class=""><%= yield(:title) %></h1>
+</div>
+    <%= will_paginate %>
+
+    <ul class="users">
+        <%= render @categories %>
+    </ul>
+
+    <%= will_paginate %>

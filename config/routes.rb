@@ -4,11 +4,17 @@ Rails.application.routes.draw do
   delete  '/logout',  to: 'sessions#destroy'
   get    '/signup',   to: 'users#new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :lessons do
+    resources :lesson_words
+  end
+  
+  resources :categories 
   root   'static_pages#home'
+  
   resources :users do
     member do
      get :following, :followers
-    end
+    end 
   end
   resources :relationships,only:[:create,:destroy]
   namespace :admin do
